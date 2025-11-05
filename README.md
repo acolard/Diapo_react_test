@@ -21,5 +21,5 @@ npm run deploy
 
 ## Commande git pour dupliquer le repostoty dans un dossier  du pc
 
-git clone https://github.com/acolard/Diapo_react_test.git
+git clone https://github.com/acolard/Diapo_react_test.git  
 npm install (Installe les dépendances si c’est un projet Node.js)
