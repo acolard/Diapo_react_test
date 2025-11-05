@@ -37,19 +37,46 @@ export default function ProductEnergyPage() {
           Bilan énergétique d'un produit — Performance énergétique
         </h1>
         <p className="mt-3 text-gray-600">
-          Page interactive pour comprendre et visualiser le bilan énergétique d’un produit à travers son cycle de vie et sa performance énergétique.
+          Page interactive pour comprendre et visualiser le bilan énergétique
+          d’un produit à travers son cycle de vie et sa performance énergétique.
         </p>
 
         {/* Table des matières flottante */}
         <nav className="fixed top-6 right-6 bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl shadow-lg p-4 w-64 z-50 hidden lg:block">
-          <h2 className="text-lg font-semibold mb-2 text-gray-800">Table des matières</h2>
+          <h2 className="text-lg font-semibold mb-2 text-gray-800">
+            Table des matières
+          </h2>
           <ul className="list-decimal list-inside space-y-1 text-blue-600">
-            <li><a href="#bilan" className="hover:underline">Bilan énergétique</a></li>
-            <li><a href="#cycle-vie" className="hover:underline">Répartition énergétique</a></li>
-            <li><a href="#indicateurs" className="hover:underline">Indicateurs</a></li>
-            <li><a href="#methodes" className="hover:underline">Méthodes d’évaluation</a></li>
-            <li><a href="#leviers" className="hover:underline">Leviers d’amélioration</a></li>
-            <li><a href="#outils" className="hover:underline">Outils & normes</a></li>
+            <li>
+              <a href="#bilan" className="hover:underline">
+                Bilan énergétique
+              </a>
+            </li>
+            <li>
+              <a href="#cycle-vie" className="hover:underline">
+                Répartition énergétique
+              </a>
+            </li>
+            <li>
+              <a href="#indicateurs" className="hover:underline">
+                Indicateurs
+              </a>
+            </li>
+            <li>
+              <a href="#methodes" className="hover:underline">
+                Méthodes d’évaluation
+              </a>
+            </li>
+            <li>
+              <a href="#leviers" className="hover:underline">
+                Leviers d’amélioration
+              </a>
+            </li>
+            <li>
+              <a href="#outils" className="hover:underline">
+                Outils & normes
+              </a>
+            </li>
           </ul>
         </nav>
       </header>
@@ -58,32 +85,53 @@ export default function ProductEnergyPage() {
         <section id="bilan" className="bg-white rounded-2xl shadow-sm p-6">
           <h2 className="text-2xl font-semibold mb-3">1. Bilan énergétique</h2>
           <p className="text-gray-700">
-            Le <strong>bilan énergétique</strong> évalue toutes les consommations et transformations d’énergie liées au cycle de vie complet d’un produit.
+            Le <strong>bilan énergétique</strong> évalue toutes les
+            consommations et transformations d’énergie liées au cycle de vie
+            complet d’un produit.
           </p>
         </section>
 
-        <section id="cycle-vie" className="bg-white rounded-2xl shadow-sm p-6">
-          <h2 className="text-2xl font-semibold mb-4">2. Répartition énergétique par étape du cycle de vie</h2>
-          <div className="h-80">
-            <ResponsiveContainer>
-              <PieChart>
-                <Pie data={energyCycleData} cx="50%" cy="50%" outerRadius={100} dataKey="value" label>
-                  {energyCycleData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-                </Pie>
-                <Tooltip />
-                <Legend />
-              </PieChart>
-            </ResponsiveContainer>
-          </div>
+        <section
+          id="cycle-vie"
+          className="w-full bg-white rounded-2xl shadow-sm p-6"
+        >
+          <h2 className="text-2xl font-semibold mb-4">
+            2. Répartition énergétique par étape du cycle de vie
+          </h2>
+          <ResponsiveContainer width="100%" height={320}>
+            <PieChart>
+              <Pie
+                data={energyCycleData}
+                cx="50%"
+                cy="50%"
+                outerRadius={100}
+                dataKey="value"
+                label
+              >
+                {energyCycleData.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+              <Tooltip />
+              <Legend />
+            </PieChart>
+          </ResponsiveContainer>
           <p className="text-sm text-gray-600 text-center mt-2">
-            Exemple de répartition de la consommation énergétique par phase du cycle de vie.
+            Exemple de répartition de la consommation énergétique par phase du
+            cycle de vie.
           </p>
         </section>
 
-        <section id="indicateurs" className="bg-white rounded-2xl shadow-sm p-6">
-          <h2 className="text-2xl font-semibold mb-3">3. Indicateurs de performance énergétique</h2>
+        <section
+          id="indicateurs"
+          className="bg-white rounded-2xl shadow-sm p-6"
+        >
+          <h2 className="text-2xl font-semibold mb-3">
+            3. Indicateurs de performance énergétique
+          </h2>
           <ul className="list-disc list-inside text-gray-700">
             <li>Énergie grise totale (MJ ou kWh) — minimiser</li>
             <li>Consommation en phase d’usage (kWh/an) — réduire</li>
@@ -91,8 +139,8 @@ export default function ProductEnergyPage() {
             <li>Énergie récupérable en fin de vie — maximiser</li>
           </ul>
 
-          <div className="mt-6 h-80">
-            <ResponsiveContainer>
+          <div className="mt-6">
+            <ResponsiveContainer height={320}>
               <BarChart data={performanceData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="phase" />
@@ -100,14 +148,20 @@ export default function ProductEnergyPage() {
                 <Tooltip />
                 <Legend />
                 <Bar dataKey="conso" fill="#2563eb" name="Consommation (kWh)" />
-                <Bar dataKey="recuperation" fill="#10b981" name="Énergie récupérée (kWh)" />
+                <Bar
+                  dataKey="recuperation"
+                  fill="#10b981"
+                  name="Énergie récupérée (kWh)"
+                />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </section>
 
         <section id="methodes" className="bg-white rounded-2xl shadow-sm p-6">
-          <h2 className="text-2xl font-semibold mb-3">4. Méthodes d’évaluation</h2>
+          <h2 className="text-2xl font-semibold mb-3">
+            4. Méthodes d’évaluation
+          </h2>
           <ul className="list-disc list-inside text-gray-700">
             <li>Analyse du cycle de vie (ACV) — ISO 14040 / 14044</li>
             <li>Bilan énergétique simplifié</li>
@@ -117,7 +171,9 @@ export default function ProductEnergyPage() {
         </section>
 
         <section id="leviers" className="bg-white rounded-2xl shadow-sm p-6">
-          <h2 className="text-2xl font-semibold mb-3">5. Leviers d’amélioration</h2>
+          <h2 className="text-2xl font-semibold mb-3">
+            5. Leviers d’amélioration
+          </h2>
           <div className="grid md:grid-cols-3 gap-4">
             <div className="p-4 border rounded-lg">
               <h3 className="font-semibold">Conception</h3>
@@ -147,7 +203,9 @@ export default function ProductEnergyPage() {
         </section>
 
         <section id="outils" className="bg-white rounded-2xl shadow-sm p-6">
-          <h2 className="text-2xl font-semibold mb-3">6. Outils, bases de données et normes</h2>
+          <h2 className="text-2xl font-semibold mb-3">
+            6. Outils, bases de données et normes
+          </h2>
           <ul className="list-disc list-inside text-gray-700">
             <li>Bases : Ecoinvent, Base ADEME</li>
             <li>Logiciels : SimaPro, OpenLCA</li>
@@ -157,7 +215,10 @@ export default function ProductEnergyPage() {
         </section>
 
         <footer className="text-center text-sm text-gray-500 mt-6">
-          <p>Visualisation dynamique du bilan énergétique — version interactive avec Recharts.</p>
+          <p>
+            Visualisation dynamique du bilan énergétique — version interactive
+            avec Recharts.
+          </p>
         </footer>
       </article>
     </main>
